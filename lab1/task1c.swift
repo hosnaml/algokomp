@@ -18,4 +18,4 @@ func coins(n: Double) -> Double {
     }
 }
 
-print(coins(n: n))
+print(Int(coins(n: n)))
