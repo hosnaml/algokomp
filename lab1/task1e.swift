@@ -1,20 +1,28 @@
-let n = Double(readLine()!)!
-let a = Double(readLine()!)!
-let b = Double(readLine()!)!
-let c = Double(readLine()!)!
+let n = Int(readLine()!)!
+let a = Int(readLine()!)!
+let b = Int(readLine()!)!
+let c = Int(readLine()!)!
 
-func coins(n: Double) -> Double {
-    if n < 0 {
-        return Double.infinity
-    } else if n == 0 {
-        return 0.0
-    } else {
-        return min(Double(n), 1 + coins(n: n - a), 1 + coins(n: n - b), 1 + coins(n: n - c))
+var ar: [Double] = Array(repeating: Double.infinity, count: Int(n + 1))
+ar[0] = 0
+
+func coins(n: Int) -> Double {
+    for i in stride(from: 1, to: n + 1, by: 1) {
+        if i >= 1 {
+            ar[i] = min(ar[i], 1 + (ar[i - 1]))
+        }
+        if i >= a {
+            ar[i] = min(ar[i], 1 + (ar[i - a]))
+        }
+        if i >= b {
+            ar[i] = min(ar[i], 1 + (ar[i - b]))
+        }
+        if i >= c {
+            ar[i] = min(ar[i], 1 + (ar[i - c]))
+        }
     }
+
+    return ar[n]
 }
 
-func greedyCoins(n: Double) {
-    return
-}
-
-print(coins(n: n))
+print(Int(coins(n: n)))

@@ -17,11 +17,11 @@ func g(x: Double) -> Double {
 
 let clock = ContinuousClock()
 var outText = ""
-let filename = "out_test4.csv"
+let filename = "out_test4_repeat.csv"
 let currentDirectoryPath = FileManager.default.currentDirectoryPath
 let fileUrl = URL(fileURLWithPath: currentDirectoryPath).appendingPathComponent(filename)
 
-for i in stride(from: 10, through: 100, by: 2) {
+for i in stride(from: 10, through: 10000, by: 2) {
     let n = Double(i)
     k = n / 2
 
