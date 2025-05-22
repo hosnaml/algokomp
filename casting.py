@@ -7,7 +7,8 @@ def read_input():
 
 def main():
     V, E, m, edges = read_input()
-    if E==0 or m >= V:
+
+    if E == 0 or m == 0 or V == 0:
         print(3)        
         print(2)       
         print(3)       
@@ -17,11 +18,17 @@ def main():
         print(2, 1, 3) 
         print(2, 3, 2)
         return
+    
+    if m > V:
+        m = V + 2
 
     degree = [0] * V
     for u, v in edges:
         degree[u - 1] += 1
         degree[v - 1] += 1
+
+    if m + 2 > V:
+        m = V
 
     roles = [[] for _ in range(V)]
     for i in range(V):
